@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "gekko.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "gekko.name" . }}
+    helm.sh/chart: {{ include "gekko.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "gekko.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "gekko.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}      
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: GEKKO_REDIS_BEACON_ENABLED
+              value: "{{ .Values.beacon.enabled }}"
+            - name: GEKKO_REDIS_BEACON_HOST
+              value: "{{ .Values.beacon.redis.host }}"
+            - name: GEKKO_REDIS_BEACON_PORT
+              value: "{{ .Values.beacon.redis.port }}"
+            - name: GEKKO_MONGODB_CONNECTION
+              value: "{{ .Values.mongodb.connectionUrl }}"
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /v1/info
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /v1/info
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          resources:
+{{ toYaml .Values.resources | indent 12 }}      
+      imagePullSecrets:
+        - name: {{ .Values.image.pullSecret }}
+      serviceAccountName: {{ include "gekko.fullname" . }}

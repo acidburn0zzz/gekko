@@ -1,0 +1,55 @@
+gekko:
+  enabled: true
+  image:
+    tag: latest
+  beacon:
+    enabled: false
+    redis:
+      # TODO uses requirement values as default
+      host: "platform-redis"
+      port: "6379"
+  service:
+    type: NodePort
+    nodePorts:
+      http: "30300"
+  mongodb:
+    # TODO uses requirement values as default
+    connectionUrl: "mongodb://gekko:gekko@platform-mongodb:27017/gekko"
+
+mongodb:
+  enabled: true
+  # Auth Configuration
+  usePassword: true
+  mongodbRootPassword: root
+  mongodbDatabase: gekko
+  mongodbUsername: gekko
+  mongodbPassword: gekko
+
+  # Expose NodePort Locally
+  service:
+    type: NodePort
+    nodePort: 31072
+
+  # Disable persitence when runnin locally
+  persistence:
+    enabled: false
+
+mongoclient:
+  enabled: true
+  service:
+    type: NodePort
+  ingress:
+    enabled: false
+
+redis:
+  enabled: false
+  cluster:
+      enabled: false
+  master:
+    usePassword: false
+    # password: 'set if true'
+    service:
+      type: NodePort
+      nodePort: 31679
+    persistence:
+      enabled: false

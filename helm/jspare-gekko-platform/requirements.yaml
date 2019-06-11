@@ -1,0 +1,17 @@
+dependencies:
+-   name: gekko
+    version: 0.1.0
+    repository: file://./charts/gekko    
+    condition: gekko.enabled
+-   name: mongodb
+    version: 5.5.0
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: mongodb.enabled
+-   name: mongoclient
+    version: 0.1.0
+    repository: file://./charts/mongoclient    
+    condition: mongoclient.enabled
+-   name: redis
+    version: 6.1.3
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: redis.enabled

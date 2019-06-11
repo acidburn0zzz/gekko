@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mongoclient.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "mongoclient.name" . }}
+    helm.sh/chart: {{ include "mongoclient.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "mongoclient.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "mongoclient.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}      
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: MONGOCLIENT_DEFAULT_CONNECTION_URL
+              value: "mongodb://gekko:gekko@{{ .Release.Name }}-mongodb:27017/gekko"
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+{{ toYaml .Values.resources | indent 12 }}

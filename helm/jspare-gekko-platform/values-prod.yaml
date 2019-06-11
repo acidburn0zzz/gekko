@@ -1,0 +1,57 @@
+gekko:
+  replicaCount: 1
+  image:
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: NodePort
+  ingress:
+    enabled: false
+  beacon:
+    enabled: false
+    redis:
+      connection: ""
+  mongo:
+    connectionUrl: "mongodb://gekko:gekko@platform-mongodb:27017/gekko"
+
+mongoclient:
+  enabled: true
+  service:
+    type: NodePort
+  ingress:
+    enabled: true
+
+mongodb:
+  usePassword: true
+  mongodbRootPassword: SacBVTgyKVXcnA4v
+  mongodbEnableIPv6: true
+  mongodbSystemLogVerbosity: 0
+  mongodbDisableSystemLog: false
+  securityContext:
+    enabled: true
+    fsGroup: 1001
+    runAsUser: 1001
+  service:
+    type: NodePort
+    port: 27017
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+  livenessProbe:
+    enabled: true
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+  readinessProbe:
+    enabled: true
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+  metrics:
+    enabled: false

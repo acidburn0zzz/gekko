@@ -1,0 +1,5 @@
+# jspare-gekko-platform
+
+> Helm Chart Deployed                                                                     
+
+Made with <3 by Jspare Team.

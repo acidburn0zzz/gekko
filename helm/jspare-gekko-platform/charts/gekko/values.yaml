@@ -1,0 +1,42 @@
+# Default values for the chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: jspare/gekko
+  tag: latest
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  ## Use nodePorts to request specific ports when using NodePort
+  ##   http: <to set explicitly, choose port between 30000-32767>
+  ##   https: <to set explicitly, choose port between 30000-32767>
+  nodePorts:
+    http: ""
+    https: ""
+
+ingress:
+  enabled: false
+
+resources: {}
+  # To specify resources, uncomment the following lines, adjust them as necessary, 
+  # and remove the curly braces after 'resources:'
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+#  memory: 128Mi
+
+beacon:
+  enabled: false
+  redis:
+    connection: ""
+mongodb:
+  connectionUrl: "mongodb://gekko:gekko@platform-mongodb:27017/gekko"

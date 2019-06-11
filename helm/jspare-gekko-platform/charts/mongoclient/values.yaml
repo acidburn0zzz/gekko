@@ -1,0 +1,34 @@
+# Default values for the chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+
+image:
+  repository: mongoclient/mongoclient
+  tag: 2.2.0
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: NodePort
+  ## Use nodePorts to request specific ports when using NodePort
+  ##   http: <to set explicitly, choose port between 30000-32767>
+  ##   https: <to set explicitly, choose port between 30000-32767>
+  nodePorts:
+    http: ""
+    https: ""
+
+ingress:
+  enabled: false
+
+resources: {}
+  # To specify resources, uncomment the following lines, adjust them as necessary, 
+  # and remove the curly braces after 'resources:'
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
