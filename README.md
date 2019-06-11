@@ -1,10 +1,4 @@
-# Gekko [![npm](https://img.shields.io/npm/dm/gekko.svg)]() [![Build Status](https://travis-ci.org/askmike/gekko.png)](https://travis-ci.org/askmike/gekko) [![Build status](https://ci.appveyor.com/api/projects/status/github/askmike/gekko?branch=stable&svg=true)](https://ci.appveyor.com/project/askmike/gekko)
-
-![Gordon Gekko](http://mikevanrossum.nl/static/gekko.jpg)
-
-*The most valuable commodity I know of is information.*
-
--Gordon Gekko
+# Gekko  [![Build Status](https://travis-ci.org/jspare-projects/gekko.svg?branch=master)](https://travis-ci.org/jspare-projects/gekko)
 
 Gekko is a Bitcoin TA trading and backtesting platform that connects to popular Bitcoin exchanges. It is written in JavaScript and runs on [Node.js](http://nodejs.org).
 
@@ -12,16 +6,13 @@ Gekko is a Bitcoin TA trading and backtesting platform that connects to popular 
 
 ## Documentation
 
-See [the documentation website](https://gekko.wizb.it/docs/introduction/about_gekko.html).
+See [the documentation](https://github.com/jspare-projects/gekko/wiki).
 
-## Installation & Usage
+##  Getting Started
 
-See [the installing Gekko doc](https://gekko.wizb.it/docs/installation/installing_gekko.html).
+See [the installing Gekko doc](https://github.com/jspare-projects/gekko/wiki/Getting-Started).
 
-## Community & Support
 
-Gekko has [a forum](https://forum.gekko.wizb.it/) that is the place for discussions on using Gekko, automated trading and exchanges. In case you rather want to chat in realtime about Gekko feel free to join the [Gekko Support Discord](https://discord.gg/26wMygt).
+## Credits
 
-## Final
-
-If Gekko helped you in any way, you can always leave me a tip at (BTC) 13r1jyivitShUiv9FJvjLH7Nh1ZZptumwW
+This project is forked from [@askmike/gekko](https://github.com/askmike/gekko) the original idealizer. We would like to keep tracking the whole source code and keep improving. 
