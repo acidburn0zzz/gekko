@@ -39,6 +39,7 @@
     "stats-lite": "^2.0.4",
     "tiny-promisify": "^0.1.1",
     "toml": "^2.3.0",
+    "uuid": "^3.3.2",
     "ws": "^6.0.0"
   },
   "devDependencies": {
@@ -47,10 +48,14 @@
     "proxyquire": "^1.7.10",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "sinon": "^4.2.0"
+    "sinon": "^4.2.0",
+    "standard-version": "^4.4.0"
   },
   "engines": {
     "node": ">=8.11.2"
+  },
+  "standard-version": {
+    "message": "chore(release): %s [ci skip]"
   },
   "license": "MIT",
   "repository": {

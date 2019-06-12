@@ -51,3 +51,4 @@ private-*.toml
 SECRET-api-keys.json
 exchange/nusadua
 *.iml
+package-lock.json
