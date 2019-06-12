@@ -24,14 +24,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: GEKKO_REDIS_BEACON_ENABLED
-              value: "{{ .Values.beacon.enabled }}"
-            - name: GEKKO_REDIS_BEACON_HOST
-              value: "{{ .Values.beacon.redis.host }}"
-            - name: GEKKO_REDIS_BEACON_PORT
-              value: "{{ .Values.beacon.redis.port }}"
-            - name: GEKKO_MONGODB_CONNECTION
-              value: "{{ .Values.mongodb.connectionUrl }}"
+          {{- range $key, $value := .Values.config }}
+            - name: {{ $key | quote }}
+              value: {{ $value | quote }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 3000
