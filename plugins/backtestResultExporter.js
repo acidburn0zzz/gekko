@@ -8,9 +8,10 @@ const env = util.gekkoEnv();
 const config = util.getConfig();
 const moment = require('moment');
 const fs = require('fs');
+const uuidv4 = require('uuid/v4');
 
 const BacktestResultExporter = function() {
-  this.performanceReport;
+  this.performanceReport = null;
   this.roundtrips = [];
   this.stratUpdates = [];
   this.stratCandles = [];
@@ -88,6 +89,7 @@ BacktestResultExporter.prototype.processPerformanceReport = function(performance
 }
 
 BacktestResultExporter.prototype.finalize = function(done) {
+
   const backtest = {
     market: config.watch,
     tradingAdvisor: config.tradingAdvisor,
@@ -110,6 +112,12 @@ BacktestResultExporter.prototype.finalize = function(done) {
   if(env === 'child-process') {
     process.send({backtest});
   }
+
+  // Give a uid for a backtest
+  backtest.id = uuidv4();
+  backtest.timestamp = moment().unix();
+  
+  this.emit('backtestResult', backtest);
 
   if(config.backtestResultExporter.writeToDisk) {
     this.writeToDisk(backtest, done);
