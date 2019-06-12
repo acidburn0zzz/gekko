@@ -4,7 +4,6 @@ const p = require('../../package.json');
 module.exports = function *() {
   this.body = {
     version: p.version,
-    info: `${p.host}/v1/info`,
-    workspaceSyncHook: `${p.host}/v1/workspaceSyncHook`
+    info: `/api/info`
   }
 }

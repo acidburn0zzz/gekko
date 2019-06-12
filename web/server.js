@@ -1,4 +1,5 @@
-const config = require('./vue/dist/UIconfig');
+let util = require('../core/util');
+let config = util.getConfig();
 
 const koa = require('koa');
 const serve = require('koa-static');
@@ -6,7 +7,6 @@ const cors = require('koa-cors');
 const _ = require('lodash');
 const bodyParser = require('koa-bodyparser');
 
-const opn = require('opn');
 const server = require('http').createServer();
 const router = require('koa-router')();
 const app = koa();
@@ -15,9 +15,6 @@ const WebSocketServer = require('ws').Server;
 const wss = new WebSocketServer({server: server});
 
 const cache = require('./state/cache');
-
-const nodeCommand = _.last(process.argv[1].split('/'));
-const isDevServer = nodeCommand === 'server' || nodeCommand === 'server.js';
 
 wss.on('connection', ws => {
   ws.isAlive = true;
@@ -70,13 +67,13 @@ cache.set('gekkos', new GekkoManager);
 cache.set('apiKeyManager', require('./apiKeyManager'));
 
 // setup API routes
-
 const WEBROOT = __dirname + '/';
 const ROUTE = n => WEBROOT + 'routes/' + n;
 
 // attach routes
 const apiKeys = require(ROUTE('apiKeys'));
 router.get('/api/info', require(ROUTE('info')));
+router.get('/api/config', require(ROUTE('config')));
 router.get('/api/strategies', require(ROUTE('strategies')));
 router.get('/api/configPart/:part', require(ROUTE('configPart')));
 router.get('/api/apiKeys', apiKeys.get);
@@ -108,19 +105,6 @@ app
 server.timeout = config.api.timeout || 120000;
 server.on('request', app.callback());
 server.listen(config.api.port, config.api.host, '::', () => {
-  const host = `${config.ui.host}:${config.ui.port}${config.ui.path}`;
-  const location = `${config.ui.ssl ? 'https://' : 'http://'}${host}`;
-
-  console.log('Serving Gekko UI on ' + location + '\n');
-
-  // only open a browser when running `node gekko`
-  // this prevents opening the browser during development
-  if (!isDevServer && !config.headless) {
-    opn(location)
-    .catch(err => {
-      console.log(
-        'Something went wrong when trying to open your web browser. UI is running on '
-        + location + '.');
-    });
-  }
+  const host = `${config.api.host}:${config.api.port}`;
+  console.log(`Serving Gekko API on http://${host}\n`);
 });

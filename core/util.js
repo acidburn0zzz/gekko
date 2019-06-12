@@ -15,20 +15,27 @@ var _gekkoEnv = false;
 
 var _args = false;
 
+const DEFAULT_CONFIG_FILE = 'config.js';
+let getProgramConfig = () => program.config || DEFAULT_CONFIG_FILE;
+
 // helper functions
-var util = {
+let util = {
+
+  getGeneralConfig: () => require(util.dirs().gekko + getProgramConfig()),
   getConfig: function() {
     // cache
     if(_config)
       return _config;
 
-    if(!program.config)
-        util.die('Please specify a config file.', true);
+    let programConfig = getProgramConfig();
 
-    if(!fs.existsSync(util.dirs().gekko + program.config))
+    if(!programConfig)
+        util.die('Please specify a config file. The default is not configured', true);
+
+    if(!fs.existsSync(util.dirs().gekko + programConfig))
       util.die('Cannot find the specified config file.', true);
 
-    _config = require(util.dirs().gekko + program.config);
+    _config = require(util.dirs().gekko + programConfig);
     return _config;
   },
   // overwrite the whole config
@@ -109,14 +116,14 @@ var util = {
       exchanges: ROOT + 'exchange/wrappers/',
       plugins: ROOT + 'plugins/',
       methods: ROOT + 'strategies/',
-      indicators: ROOT + 'strategies/indicators/',
+      indicators: ROOT + 'indicators/',
       budfox: ROOT + 'core/budfox/',
       importers: ROOT + 'importers/exchanges/',
       tools: ROOT + 'core/tools/',
       workers: ROOT + 'core/workers/',
       web: ROOT + 'web/',
       config: ROOT + 'config/',
-      broker: ROOT + 'exchange/'
+      broker: ROOT + 'exchange/',
     }
   },
   inherit: function(dest, source) {
