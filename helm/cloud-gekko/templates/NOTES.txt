@@ -1,4 +1,4 @@
-# jspare-gekko-platform
+# cloud-gekko
 
 > Helm Chart Deployed                                                                     
 
