@@ -109,6 +109,11 @@ var subscriptions = [
     event: 'roundtrip',
     handler: 'processRoundtrip'
   },
+  {
+    emitter: 'backtestResultExporter',
+    event: 'backtestResult',
+    handler: 'processBacktestResult'
+  }
 ];
 
 module.exports = subscriptions;
