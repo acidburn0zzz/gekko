@@ -6,9 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0] - Unreleased
 
-- Add Info endpoint.
-- Add Kubernetes support with Helm Chart.
 - Track Jspare's Gekko documentation on [Github Wiki](https://github.com/jspare-projects/gekko/wiki) turning it easier to be maintained and updated.
+- Add GET `/config` endpoint.
+- Add Kubernetes support with Helm Chart.
+- Add new subscription `backtestResult` from `backtestExporterResult` with registered handle `processBacktestResult`.
+- Add new plugin `backtestAdapterExporter` to subscribe a `processBacktestResult`. 
+- Add mongodb `processBacktestResult` consumer implementation.
 
 ## [0.6.8] - 6-11-2019
 
