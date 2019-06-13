@@ -4,20 +4,14 @@
     "ETH",
     "LTC",
     "BTC",
-    "NANO",
     "BCH",
-    "KIN",
     "TRX",
-    "CRPT",
-    "GRLC",
     "ECA",
     "XRP",
     "ADA",
     "DOGE",
-    "STQ",
-    "DASC",
-    "EOS",
-    "DTX"
+    "GRN",
+    "EOS"
   ],
   "currencies": [
     "BTC",
@@ -44,7 +38,7 @@
       ],
       "minimalOrder": {
         "amount": 1e-8,
-        "price": 0.00001,
+        "price": 0.000001,
         "order": 0
       }
     },
@@ -73,44 +67,11 @@
     {
       "pair": [
         "BTC",
-        "NANO"
-      ],
-      "minimalOrder": {
-        "amount": 1e-8,
-        "price": 1e-8,
-        "order": 0
-      }
-    },
-    {
-      "pair": [
-        "BTC",
         "BCH"
       ],
       "minimalOrder": {
         "amount": 1e-8,
         "price": 0.00001,
-        "order": 0
-      }
-    },
-    {
-      "pair": [
-        "BTC",
-        "KIN"
-      ],
-      "minimalOrder": {
-        "amount": 1,
-        "price": 1e-10,
-        "order": 0
-      }
-    },
-    {
-      "pair": [
-        "ETH",
-        "KIN"
-      ],
-      "minimalOrder": {
-        "amount": 1,
-        "price": 1e-8,
         "order": 0
       }
     },
@@ -128,33 +89,11 @@
     {
       "pair": [
         "BTC",
-        "CRPT"
-      ],
-      "minimalOrder": {
-        "amount": 1e-8,
-        "price": 1e-8,
-        "order": 0
-      }
-    },
-    {
-      "pair": [
-        "BTC",
-        "GRLC"
-      ],
-      "minimalOrder": {
-        "amount": 1e-8,
-        "price": 1e-8,
-        "order": 0
-      }
-    },
-    {
-      "pair": [
-        "BTC",
         "ECA"
       ],
       "minimalOrder": {
         "amount": 1e-8,
-        "price": 1e-8,
+        "price": 1e-10,
         "order": 0
       }
     },
@@ -215,17 +154,6 @@
     },
     {
       "pair": [
-        "BTC",
-        "STQ"
-      ],
-      "minimalOrder": {
-        "amount": 0.01,
-        "price": 1e-8,
-        "order": 0
-      }
-    },
-    {
-      "pair": [
         "EUR",
         "IOT"
       ],
@@ -238,7 +166,7 @@
     {
       "pair": [
         "BTC",
-        "DASC"
+        "GRN"
       ],
       "minimalOrder": {
         "amount": 0.00001,
@@ -249,7 +177,7 @@
     {
       "pair": [
         "ETH",
-        "DASC"
+        "GRN"
       ],
       "minimalOrder": {
         "amount": 0.00001,
@@ -260,21 +188,10 @@
     {
       "pair": [
         "EUR",
-        "DASC"
+        "GRN"
       ],
       "minimalOrder": {
         "amount": 0.00001,
-        "price": 0.0001,
-        "order": 0
-      }
-    },
-    {
-      "pair": [
-        "EUR",
-        "NANO"
-      ],
-      "minimalOrder": {
-        "amount": 0.0001,
         "price": 0.0001,
         "order": 0
       }
@@ -303,12 +220,12 @@
     },
     {
       "pair": [
-        "BTC",
-        "DTX"
+        "USDT",
+        "ETH"
       ],
       "minimalOrder": {
-        "amount": 0.01,
-        "price": 1e-8,
+        "amount": 0.00001,
+        "price": 0.01,
         "order": 0
       }
     }

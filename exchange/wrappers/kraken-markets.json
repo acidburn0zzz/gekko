@@ -1,6 +1,7 @@
 {
   "assets": [
     "ADA",
+    "ATOM",
     "BCH",
     "DASH",
     "EOS",
@@ -9,7 +10,6 @@
     "USDT",
     "ETC",
     "ETH",
-    "ICN",
     "LTC",
     "MLN",
     "REP",
@@ -114,6 +114,91 @@
         "unit": "asset"
       },
       "pricePrecision": 8,
+      "amountPrecision": 8
+    },
+    {
+      "pair": [
+        "CAD",
+        "ATOM"
+      ],
+      "prefixed": [
+        "ZCAD",
+        "ATOM"
+      ],
+      "book": "ATOMCAD",
+      "minimalOrder": {
+        "amount": 0.01,
+        "unit": "asset"
+      },
+      "pricePrecision": 4,
+      "amountPrecision": 8
+    },
+    {
+      "pair": [
+        "ETH",
+        "ATOM"
+      ],
+      "prefixed": [
+        "XETH",
+        "ATOM"
+      ],
+      "book": "ATOMETH",
+      "minimalOrder": {
+        "amount": 0.01,
+        "unit": "asset"
+      },
+      "pricePrecision": 6,
+      "amountPrecision": 8
+    },
+    {
+      "pair": [
+        "EUR",
+        "ATOM"
+      ],
+      "prefixed": [
+        "ZEUR",
+        "ATOM"
+      ],
+      "book": "ATOMEUR",
+      "minimalOrder": {
+        "amount": 0.01,
+        "unit": "asset"
+      },
+      "pricePrecision": 4,
+      "amountPrecision": 8
+    },
+    {
+      "pair": [
+        "USD",
+        "ATOM"
+      ],
+      "prefixed": [
+        "ZUSD",
+        "ATOM"
+      ],
+      "book": "ATOMUSD",
+      "minimalOrder": {
+        "amount": 0.01,
+        "unit": "asset"
+      },
+      "pricePrecision": 4,
+      "amountPrecision": 8
+    },
+    {
+      "pair": [
+        "XBT",
+        "ATOM"
+      ],
+      "prefixed": [
+        "XXBT",
+        "ATOM"
+      ],
+      "book": "ATOMXBT",
+      "minimalOrder": {
+        "amount": 0.01,
+        "unit": "asset"
+      },
+      "pricePrecision": 7,
       "amountPrecision": 8
     },
     {
@@ -624,40 +709,6 @@
         "unit": "asset"
       },
       "pricePrecision": 2,
-      "amountPrecision": 8
-    },
-    {
-      "pair": [
-        "ETH",
-        "ICN"
-      ],
-      "prefixed": [
-        "XETH",
-        "XICN"
-      ],
-      "book": "XICNXETH",
-      "minimalOrder": {
-        "amount": "2",
-        "unit": "asset"
-      },
-      "pricePrecision": 6,
-      "amountPrecision": 8
-    },
-    {
-      "pair": [
-        "XBT",
-        "ICN"
-      ],
-      "prefixed": [
-        "XXBT",
-        "XICN"
-      ],
-      "book": "XICNXXBT",
-      "minimalOrder": {
-        "amount": "2",
-        "unit": "asset"
-      },
-      "pricePrecision": 6,
       "amountPrecision": 8
     },
     {

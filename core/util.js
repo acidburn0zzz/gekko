@@ -116,7 +116,7 @@ let util = {
       exchanges: ROOT + 'exchange/wrappers/',
       plugins: ROOT + 'plugins/',
       methods: ROOT + 'strategies/',
-      indicators: ROOT + 'indicators/',
+      indicators: ROOT + 'strategies/indicators/',
       budfox: ROOT + 'core/budfox/',
       importers: ROOT + 'importers/exchanges/',
       tools: ROOT + 'core/tools/',
