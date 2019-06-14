@@ -1,5 +1,0 @@
-# cloud-gekko
-
-> Helm Chart Deployed                                                                     
-
-Made with <3 by Jspare Team.
