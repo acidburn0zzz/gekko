@@ -95,7 +95,8 @@ router.post('/api/deleteGekko', require(ROUTE('deleteGekko')));
 router.post('/api/getCandles', require(ROUTE('getCandles')));
 
 // Sandbox API
-router.post('/v1/sandboxBacktest', require(ROUTE('sandboxBacktest')));
+router.post('/api/sandboxBacktest', require(ROUTE('sandboxBacktest')));
+
 app
 .use(cors())
 .use(serve(WEBROOT + 'vue/dist'))

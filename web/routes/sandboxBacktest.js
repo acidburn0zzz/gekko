@@ -7,7 +7,7 @@ const util = require('../../core/util');
 const dirs = util.dirs();
 const uuidv4 = require('uuid/v4');
 
-let moduleName = n => `${dirs.wstemp}/${n}/${n}`;
+let moduleName = n => `${dirs.sandboxTmp}/${n}/${n}`;
 
 /**
  * The Sandbox api allows a strategy be testes before be installed to a Live Gekko runs through the market.
@@ -24,7 +24,7 @@ module.exports = function* () {
   let settings = this.request.body.settings;
   let backtest = this.request.body.backtest;
 
-  let dir = `${dirs.wstemp}${tempId}/`;
+  let dir = `${dirs.sandboxTmp}${tempId}/`;
 
   // Create temp file
   if (!fs.existsSync(dir)) fs.mkdirSync(dir);

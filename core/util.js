@@ -124,6 +124,7 @@ let util = {
       web: ROOT + 'web/',
       config: ROOT + 'config/',
       broker: ROOT + 'exchange/',
+      sandboxTmp: ROOT + 'sandbox/temp/',
     }
   },
   inherit: function(dest, source) {
