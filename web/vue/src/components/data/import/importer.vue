@@ -71,7 +71,7 @@ export default {
         }
       }
 
-      post('import', this.config, (error, response) => {
+      post('imports', this.config, (error, response) => {
         if(error)
           return alert(error);
 
