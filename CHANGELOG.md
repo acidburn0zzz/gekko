@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add new subscription `backtestResult` from `backtestExporterResult` with registered handle `processBacktestResult`.
 - Add new plugin `backtestAdapterExporter` to subscribe a `processBacktestResult`. 
 - Add mongodb `processBacktestResult` consumer implementation.
+- Add `Backtest Results` rest api exposed through `/backtests` allowing query and delete results already stored.
+- Add `BacktestQuery` plugin for `mongodb`.
 
 ## [0.6.8] - 6-11-2019
 

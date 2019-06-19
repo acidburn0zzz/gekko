@@ -17,7 +17,10 @@ const BacktestAdapterExporter = function () {
 
 BacktestAdapterExporter.prototype.processBacktestResult = function (backtest) {
 
+  const id = backtest.id;
+  delete backtest.id;
   this.backtestResultCollection.insert({
+    _id: id,
     exchange: this.exchange,
     pair: this.pair,
     time: moment().unix(),

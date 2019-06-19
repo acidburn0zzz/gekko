@@ -8,7 +8,7 @@ var settings = {
   pair: [watch.currency, watch.asset],
   historyCollection: `${exchangeLowerCase}_candles`,
   adviceCollection: `${exchangeLowerCase}_advices`,
-  backtestResultCollection: `backtestResults`
+  backtestResultCollection: `backtests`
 };
 
 module.exports = {
