@@ -82,6 +82,8 @@ router.get('/api/backtests', require(ROUTE('backtests')));
 router.get('/api/backtests/:id', require(ROUTE('backtestResult')));
 router.delete('/api/backtests/:id', require(ROUTE('backtestDeleteResult')));
 router.get('/api/datasets', require(ROUTE('datasets')));
+router.post('/api/utils/backtests/combinations', require(ROUTE('backtestsCombinations')));
+router.post('/api/utils/backtests/validate', require(ROUTE('backtestsValidate')));
 
 const listWraper = require(ROUTE('list'));
 router.get('/api/imports', listWraper('imports'));
