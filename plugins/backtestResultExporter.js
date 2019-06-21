@@ -127,7 +127,9 @@ BacktestResultExporter.prototype.finalize = function (done) {
   backtest.id = uuidv4();
 
   // If no parent id was defined just assume the id.
-  if (!backtest.parentId) {
+  if (config.parentId) {
+    backtest.parentId = config.parentId;
+  }else{
     backtest.parentId = backtest.id;
   }
 

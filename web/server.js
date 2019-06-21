@@ -81,6 +81,7 @@ router.get('/api/apiKeys', apiKeys.get);
 router.get('/api/backtests', require(ROUTE('backtests')));
 router.get('/api/backtests/:id', require(ROUTE('backtestResult')));
 router.delete('/api/backtests/:id', require(ROUTE('backtestDeleteResult')));
+router.get('/api/datasets', require(ROUTE('datasets')));
 
 const listWraper = require(ROUTE('list'));
 router.get('/api/imports', listWraper('imports'));
@@ -91,7 +92,7 @@ router.get('/api/exchanges', require(ROUTE('exchanges')));
 router.post('/api/addApiKey', apiKeys.add);
 router.post('/api/removeApiKey', apiKeys.remove);
 router.post('/api/scan', require(ROUTE('scanDateRange')));
-router.post('/api/scansets', require(ROUTE('scanDatasets')));
+router.post('/api/scansets', require(ROUTE('datasets')));
 router.post('/api/backtest', require(ROUTE('backtest')));
 router.post('/api/startGekko', require(ROUTE('startGekko')));
 router.post('/api/stopGekko', require(ROUTE('stopGekko')));
