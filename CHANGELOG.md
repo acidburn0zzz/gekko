@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add mongodb `processBacktestResult` consumer implementation.
 - Add `Backtest Results` rest api exposed through `/backtests` allowing query and delete results already stored.
 - Add `BacktestQuery` plugin for `mongodb`.
+- Add api to generate combinations of backtest based on a specification of multiple possible values. 
+- Add POST `/api/utils/backtests/combinations` endpoint to generate combinations.
 
 ## [0.6.8] - 6-11-2019
 
