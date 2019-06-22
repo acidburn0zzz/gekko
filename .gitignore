@@ -52,3 +52,5 @@ SECRET-api-keys.json
 exchange/nusadua
 *.iml
 package-lock.json
+workspaces/indicators/
+workspaces/strategies/

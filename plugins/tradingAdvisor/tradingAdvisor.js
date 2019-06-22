@@ -45,7 +45,7 @@ let Actor = function (done) {
 
 Actor.prototype.setupStrategy = function () {
 
-  let module = `${dirs.methods}${this.strategyName}`;
+  let module = `${dirs.methods}${this.strategyName}/${this.strategyName}`;
 
   // Running through a sandbox strategy
   if (this.sandbox) {
