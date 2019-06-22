@@ -85,6 +85,9 @@ router.get('/api/datasets', require(ROUTE('datasets')));
 router.post('/api/utils/backtests/combinations', require(ROUTE('backtestsCombinations')));
 router.post('/api/utils/backtests/validate', require(ROUTE('backtestsValidate')));
 
+router.get('/v1/workspaceSyncHook', require(ROUTE('workspaceSyncHook')));
+router.post('/v1/workspaceSyncHook', require(ROUTE('workspaceSyncHook')));
+
 const listWraper = require(ROUTE('list'));
 router.get('/api/imports', listWraper('imports'));
 router.get('/api/gekkos', listWraper('gekkos'));
@@ -122,4 +125,9 @@ server.on('request', app.callback());
 server.listen(config.api.port, config.api.host, '::', () => {
   const host = `${config.api.host}:${config.api.port}`;
   console.log(`Serving Gekko API on http://${host}\n`);
+
+  if(config.workspaceSync.enabled){
+    const workspaceSync = require('../plugins/workspaceSync');
+    workspaceSync.startPeriodic(config.workspaceSync);
+  }
 });

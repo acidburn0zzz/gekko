@@ -125,6 +125,7 @@ let util = {
       config: ROOT + 'config/',
       broker: ROOT + 'exchange/',
       sandboxTmp: ROOT + 'sandbox/temp/',
+      scmTemp: ROOT + 'workspaces/temp/'
     }
   },
   inherit: function(dest, source) {
