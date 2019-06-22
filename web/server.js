@@ -85,8 +85,9 @@ router.get('/api/datasets', require(ROUTE('datasets')));
 router.post('/api/utils/backtests/combinations', require(ROUTE('backtestsCombinations')));
 router.post('/api/utils/backtests/validate', require(ROUTE('backtestsValidate')));
 
-router.get('/v1/workspaceSyncHook', require(ROUTE('workspaceSyncHook')));
-router.post('/v1/workspaceSyncHook', require(ROUTE('workspaceSyncHook')));
+router.post('/api/v1/workspaces', require(ROUTE('workspacesConfig')));
+router.get('/api/v1/workspaceSyncHook', require(ROUTE('workspaceSyncHook')));
+router.post('/api/v1/workspaceSyncHook', require(ROUTE('workspaceSyncHook')));
 
 const listWraper = require(ROUTE('list'));
 router.get('/api/imports', listWraper('imports'));
