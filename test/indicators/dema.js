@@ -7,7 +7,7 @@ var _ = require('lodash');
 
 var util = require('../../core/util');
 var dirs = util.dirs();
-var INDICATOR_PATH = dirs.indicators;
+var INDICATOR_PATH = dirs.testIndicators;
 
 // Fake input prices to verify all indicators
 // are working correctly by comparing fresh
