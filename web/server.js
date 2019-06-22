@@ -94,18 +94,17 @@ router.get('/api/exchanges', require(ROUTE('exchanges')));
 router.post('/api/addApiKey', apiKeys.add);
 router.post('/api/removeApiKey', apiKeys.remove);
 router.post('/api/scan', require(ROUTE('scanDateRange')));
-router.post('/api/scansets', require(ROUTE('datasets')));
+router.post('/api/scansets', require(ROUTE('scanDatasets')));
 router.post('/api/backtest', require(ROUTE('backtest')));
 router.post('/api/startGekko', require(ROUTE('startGekko')));
 router.post('/api/stopGekko', require(ROUTE('stopGekko')));
 router.post('/api/deleteGekko', require(ROUTE('deleteGekko')));
 router.post('/api/getCandles', require(ROUTE('getCandles')));
 
-const imports = require(ROUTE('import'));
 
 // Keep legacy ui working
-router.post('/api/import', imports);
-router.post('/api/imports', imports);
+router.post('/api/import', require(ROUTE('import')));
+router.post('/api/imports', require(ROUTE('multiImport')));
 
 // Sandbox API
 router.post('/api/sandboxBacktest', require(ROUTE('sandboxBacktest')));
