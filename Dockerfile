@@ -19,6 +19,8 @@ RUN npm install -g --production node-gyp && \
 # Install Gekko dependencies
 COPY package.json .
 RUN npm install --production && \
+    npm install --production talib@1.0.6 && \
+    npm install --production tulind@0.8.14 && \
     npm install --production redis@0.10.0 && \
     BUILD_ONLY=true npm install nodegit && \
     npm cache clean --force
