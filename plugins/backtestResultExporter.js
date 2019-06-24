@@ -133,6 +133,8 @@ BacktestResultExporter.prototype.finalize = function (done) {
     backtest.parentId = backtest.id;
   }
 
+  backtest.request = config.request;
+
   backtest.timestamp = new Date();
 
   this.emit('backtestResult', backtest);

@@ -16,6 +16,11 @@ const pipelineRunner = promisify(require('../../core/workers/pipeline/parent'));
 //     roundtrips: true
 //   }
 // }
+
+const hashCode = function(s){
+  return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+};
+
 module.exports = function *() {
   var mode = 'backtest';
 
@@ -26,6 +31,11 @@ module.exports = function *() {
   var req = this.request.body;
 
   _.merge(config, base, req);
+
+  config.request = {
+    hash: hashCode(JSON.stringify(req)),
+    body: req
+  }
 
   this.body = yield pipelineRunner(mode, config);
 }
