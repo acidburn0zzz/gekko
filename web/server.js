@@ -78,6 +78,7 @@ router.get('/api/strategies', require(ROUTE('strategies')));
 router.get('/api/configPart/:part', require(ROUTE('configPart')));
 router.get('/api/apiKeys', apiKeys.get);
 
+router.post('/api/backtestBulk', require(ROUTE('backtestBulk')));
 router.get('/api/backtests', require(ROUTE('backtests')));
 router.get('/api/backtests/:id', require(ROUTE('backtestResult')));
 router.delete('/api/backtests/:id', require(ROUTE('backtestDeleteResult')));

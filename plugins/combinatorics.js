@@ -79,10 +79,9 @@ const Combinatorics = {
 
     combination.forEach(cmb => {
 
-      let newSpec = _.clone(spec);
+      let newSpec = _.cloneDeep(spec);
       cmb.forEach(i => {
-        set(newSpec, i.path.replace('root.', '').replace('._values', ''),
-          i.value);
+        set(newSpec, i.path.replace('root.', '').replace('._values', ''), i.value);
       });
       newSpecs.push(newSpec);
     });
