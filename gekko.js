@@ -34,7 +34,7 @@ console.log(`
 
 const util = require(__dirname + '/core/util');
 
-console.log('\tGekko v' + util.getVersion());
+console.log('\tGekko v' + util.getVersion() + ' powered by Jspare.org <3');
 console.log('\tI\'m gonna make you rich, Bud Fox.', '\n\n');
 
 const dirs = util.dirs();

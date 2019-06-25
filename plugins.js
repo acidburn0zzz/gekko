@@ -227,7 +227,16 @@ var plugins = [
     description: 'Exports the results of a gekko backtest',
     slug: 'backtestResultExporter',
     async: false,
+    emits: true,
     modes: ['backtest']
+  },
+  {
+    name: 'Backtest Adapter Exporter',
+    description: 'Backtest Adapter Exporter',
+    slug: 'backtestAdapterExporter',
+    async: false,
+    modes: ['backtest'],
+    path: config => config.adapter + '/backtestAdapterExporter.js'
   },
   {
     name: 'Child to parent',

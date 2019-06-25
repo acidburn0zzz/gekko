@@ -75,6 +75,7 @@ if(silent) {
   Log.prototype.debug = _.noop;
   Log.prototype.info = _.noop;
   Log.prototype.warn = _.noop;
+  Log.prototype.error = _.noop;
   Log.prototype.write = _.noop;
 }
 

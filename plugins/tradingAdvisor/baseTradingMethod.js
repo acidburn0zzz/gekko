@@ -9,7 +9,7 @@ const ENV = util.gekkoEnv();
 const mode = util.gekkoMode();
 const startTime = util.getStartTime();
 
-const indicatorsPath = dirs.methods + 'indicators/';
+const indicatorsPath = dirs.indicators;
 const indicatorFiles = fs.readdirSync(indicatorsPath);
 const Indicators = {};
 

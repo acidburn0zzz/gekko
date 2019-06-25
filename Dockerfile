@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:8-alpine
 
 ENV HOST localhost
 ENV PORT 3000
@@ -7,6 +7,11 @@ ENV PORT 3000
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+RUN apk update && \
+    apk upgrade && \
+    apk add git libgit2-dev && \
+    apk add python tzdata pkgconfig build-base
+
 # Install GYP dependencies globally, will be used to code build other dependencies
 RUN npm install -g --production node-gyp && \
     npm cache clean --force
@@ -14,14 +19,19 @@ RUN npm install -g --production node-gyp && \
 # Install Gekko dependencies
 COPY package.json .
 RUN npm install --production && \
-    npm install --production redis@0.10.0 talib@1.0.2 tulind@0.8.7 pg && \
+    npm install --production talib@1.0.6 && \
+    npm install --production tulind@0.8.14 && \
+    npm install --production redis@0.10.0 && \
+    BUILD_ONLY=true npm install nodegit && \
     npm cache clean --force
 
 # Install Gekko Broker dependencies
 WORKDIR exchange
+
 COPY exchange/package.json .
 RUN npm install --production && \
     npm cache clean --force
+
 WORKDIR ../
 
 # Bundle app source

@@ -1,6 +1,6 @@
 {
   "name": "gekko",
-  "version": "0.6.8",
+  "version": "1.0.0",
   "description": "A bitcoin trading bot for auto trading at various exchanges",
   "keywords": [
     "trading",
@@ -13,7 +13,7 @@
     "test": "./node_modules/.bin/mocha test/*.js --recursive test -u tdd --reporter spec",
     "start": "node ./gekko --config config.js --ui"
   },
-  "author": "Mike van Rossum <mike@mvr.me>",
+  "author": "Jspare.org <jspare@jspare.org>",
   "dependencies": {
     "async": "2.1.2",
     "bitfinex-api-node": "^1.2.1",
@@ -21,6 +21,7 @@
     "commander": "^2.13.0",
     "gekko": "0.0.9",
     "humanize-duration": "^3.10.0",
+    "js-combinatorics": "^0.5.4",
     "koa": "^1.2.0",
     "koa-bodyparser": "^2.2.0",
     "koa-cors": "0.0.16",
@@ -29,6 +30,9 @@
     "koa-static": "^2.0.0",
     "lodash": "2.x",
     "moment": "^2.20.1",
+    "mongojs": "^2.6.0",
+    "ncp": "^2.0.0",
+    "nodegit": "^0.24.1",
     "opn": "^4.0.2",
     "promisify-node": "^0.5.0",
     "prompt-lite": "0.1.1",
@@ -39,6 +43,7 @@
     "stats-lite": "^2.0.4",
     "tiny-promisify": "^0.1.1",
     "toml": "^2.3.0",
+    "uuid": "^3.3.2",
     "ws": "^6.0.0"
   },
   "devDependencies": {
@@ -47,14 +52,18 @@
     "proxyquire": "^1.7.10",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "sinon": "^4.2.0"
+    "sinon": "^4.2.0",
+    "standard-version": "^4.4.0"
   },
   "engines": {
     "node": ">=8.11.2"
   },
+  "standard-version": {
+    "message": "chore(release): %s [ci skip]"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/askmike/gekko.git"
+    "url": "https://github.com/jspare-projects/gekko.git"
   }
 }

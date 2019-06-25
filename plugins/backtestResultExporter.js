@@ -8,9 +8,10 @@ const env = util.gekkoEnv();
 const config = util.getConfig();
 const moment = require('moment');
 const fs = require('fs');
+const uuidv4 = require('uuid/v4');
 
-const BacktestResultExporter = function() {
-  this.performanceReport;
+const BacktestResultExporter = function () {
+  this.performanceReport = null;
   this.roundtrips = [];
   this.stratUpdates = [];
   this.stratCandles = [];
@@ -18,32 +19,37 @@ const BacktestResultExporter = function() {
 
   this.candleProps = config.backtestResultExporter.data.stratCandleProps;
 
-  if(!config.backtestResultExporter.data.stratUpdates)
+  if (!config.backtestResultExporter.data.stratUpdates) {
     this.processStratUpdate = null;
+  }
 
-  if(!config.backtestResultExporter.data.roundtrips)
+  if (!config.backtestResultExporter.data.roundtrips) {
     this.processRoundtrip = null;
+  }
 
-  if(!config.backtestResultExporter.data.stratCandles)
+  if (!config.backtestResultExporter.data.stratCandles) {
     this.processStratCandles = null;
+  }
 
-  if(!config.backtestResultExporter.data.portfolioValues)
+  if (!config.backtestResultExporter.data.portfolioValues) {
     this.processPortfolioValueChange = null;
+  }
 
-  if(!config.backtestResultExporter.data.trades)
+  if (!config.backtestResultExporter.data.trades) {
     this.processTradeCompleted = null;
+  }
 
   _.bindAll(this);
 }
 
-BacktestResultExporter.prototype.processPortfolioValueChange = function(portfolio) {
+BacktestResultExporter.prototype.processPortfolioValueChange = function (portfolio) {
   this.portfolioValue = portfolio.balance;
 }
 
-BacktestResultExporter.prototype.processStratCandle = function(candle) {
+BacktestResultExporter.prototype.processStratCandle = function (candle) {
   let strippedCandle;
 
-  if(!this.candleProps) {
+  if (!this.candleProps) {
     strippedCandle = {
       ...candle,
       start: candle.start.unix()
@@ -55,13 +61,14 @@ BacktestResultExporter.prototype.processStratCandle = function(candle) {
     }
   }
 
-  if(config.backtestResultExporter.data.portfolioValues)
+  if (config.backtestResultExporter.data.portfolioValues) {
     strippedCandle.portfolioValue = this.portfolioValue;
+  }
 
   this.stratCandles.push(strippedCandle);
 };
 
-BacktestResultExporter.prototype.processRoundtrip = function(roundtrip) {
+BacktestResultExporter.prototype.processRoundtrip = function (roundtrip) {
   this.roundtrips.push({
     ...roundtrip,
     entryAt: roundtrip.entryAt.unix(),
@@ -69,25 +76,26 @@ BacktestResultExporter.prototype.processRoundtrip = function(roundtrip) {
   });
 };
 
-BacktestResultExporter.prototype.processTradeCompleted = function(trade) {
+BacktestResultExporter.prototype.processTradeCompleted = function (trade) {
   this.trades.push({
     ...trade,
     date: trade.date.unix()
   });
 };
 
-BacktestResultExporter.prototype.processStratUpdate = function(stratUpdate) {
+BacktestResultExporter.prototype.processStratUpdate = function (stratUpdate) {
   this.stratUpdates.push({
     ...stratUpdate,
     date: stratUpdate.date.unix()
   });
 }
 
-BacktestResultExporter.prototype.processPerformanceReport = function(performanceReport) {
+BacktestResultExporter.prototype.processPerformanceReport = function (performanceReport) {
   this.performanceReport = performanceReport;
 }
 
-BacktestResultExporter.prototype.finalize = function(done) {
+BacktestResultExporter.prototype.finalize = function (done) {
+
   const backtest = {
     market: config.watch,
     tradingAdvisor: config.tradingAdvisor,
@@ -95,33 +103,53 @@ BacktestResultExporter.prototype.finalize = function(done) {
     performanceReport: this.performanceReport
   };
 
-  if(config.backtestResultExporter.data.stratUpdates)
+  if (config.backtestResultExporter.data.stratUpdates) {
     backtest.stratUpdates = this.stratUpdates;
+  }
 
-  if(config.backtestResultExporter.data.roundtrips)
+  if (config.backtestResultExporter.data.roundtrips) {
     backtest.roundtrips = this.roundtrips;
+  }
 
-  if(config.backtestResultExporter.data.stratCandles)
+  if (config.backtestResultExporter.data.stratCandles) {
     backtest.stratCandles = this.stratCandles;
+  }
 
-  if(config.backtestResultExporter.data.trades)
+  if (config.backtestResultExporter.data.trades) {
     backtest.trades = this.trades;
+  }
 
-  if(env === 'child-process') {
+  if (env === 'child-process') {
     process.send({backtest});
   }
 
-  if(config.backtestResultExporter.writeToDisk) {
+  // Give a uid for a backtest
+  backtest.id = uuidv4();
+
+  // If no parent id was defined just assume the id.
+  if (config.parentId) {
+    backtest.parentId = config.parentId;
+  }else{
+    backtest.parentId = backtest.id;
+  }
+
+  backtest.request = config.request;
+
+  backtest.timestamp = new Date();
+
+  this.emit('backtestResult', backtest);
+
+  if (config.backtestResultExporter.writeToDisk) {
     this.writeToDisk(backtest, done);
   } else {
     done();
   }
 };
 
-BacktestResultExporter.prototype.writeToDisk = function(backtest, next) {
+BacktestResultExporter.prototype.writeToDisk = function (backtest, next) {
   let filename;
 
-  if(config.backtestResultExporter.filename) {
+  if (config.backtestResultExporter.filename) {
     filename = config.backtestResultExporter.filename;
   } else {
     const now = moment().format('YYYY-MM-DD_HH-mm-ss');
@@ -132,7 +160,7 @@ BacktestResultExporter.prototype.writeToDisk = function(backtest, next) {
     util.dirs().gekko + filename,
     JSON.stringify(backtest),
     err => {
-      if(err) {
+      if (err) {
         log.error('unable to write backtest result', err);
       } else {
         log.info('written backtest to: ', util.dirs().gekko + filename);

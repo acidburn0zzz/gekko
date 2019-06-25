@@ -13,7 +13,6 @@
 # OS or Editor folders
 .DS_Store
 Thumbs.db
-config.js
 api-keys.js
 .cache
 .project
@@ -51,3 +50,6 @@ private-*.toml
 SECRET-api-keys.json
 exchange/nusadua
 *.iml
+package-lock.json
+workspaces/indicators/
+workspaces/strategies/
