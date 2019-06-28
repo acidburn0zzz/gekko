@@ -69,7 +69,7 @@ module.exports = function* () {
   _.merge(config, base, backtest);
 
   config.request = {
-    hash: hashCode(this.request.body),
+    hash: hashCode(JSON.stringify(this.request.body)),
     body: this.request.body
   };
 

@@ -45,7 +45,7 @@ let interval = null;
 
 const WorkspaceSync = {
   start: (config) => {
-    console.info('Starting Workspace Sync');
+    console.info('Starting Workspace Sync for ' + config.scm);
     procedure(config);
   },
 
