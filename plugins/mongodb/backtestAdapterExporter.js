@@ -2,7 +2,6 @@ const _ = require('lodash');
 
 const moment = require('moment');
 const util = require('../../core/util.js');
-const log = require(`${util.dirs().core}log`);
 
 const handle = require('./handle');
 const mongoUtil = require('./util');
@@ -27,7 +26,7 @@ BacktestAdapterExporter.prototype.processBacktestResult = function (backtest) {
     ...backtest
   }, {ordered: false}, e => {
     if (e) {
-      log.debug('Fail while trying to save backtest result', e);
+      console.error('Fail while trying to save backtest result', e);
     }
   });
 };

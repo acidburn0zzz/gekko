@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.2] UNRELEASED
+
+- Bugfix - Save request when processing a `sandboxBacktest`.
+
+## [1.0.1] 6-25-2019
+
+- Bugfix - Docker is not adding `config.js`. 
+
 ## [1.0.0] 6-25-2019
 
 - Track Jspare's Gekko documentation on [Github Wiki](https://github.com/jspare-projects/gekko/wiki) turning it easier to be maintained and updated.

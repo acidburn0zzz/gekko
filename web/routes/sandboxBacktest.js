@@ -9,6 +9,13 @@ const uuidv4 = require('uuid/v4');
 
 let moduleName = n => `${dirs.sandboxTmp}/${n}/${n}`;
 
+const hashCode = function (s) {
+  return s.split("").reduce(function (a, b) {
+    a = ((a << 5) - a) + b.charCodeAt(0);
+    return a & a
+  }, 0);
+};
+
 /**
  * The Sandbox api allows a strategy be testes before be installed to a Live Gekko runs through the market.
  * It means that a sanbox strategy only will be allowed to Paper Trade and Backtest.
@@ -27,7 +34,9 @@ module.exports = function* () {
   let dir = `${dirs.sandboxTmp}${tempId}/`;
 
   // Create temp file
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
 
   let rawStrategyFile = `${moduleName(tempId)}.js`;
   fs.writeFileSync(rawStrategyFile, rawStrategy);
@@ -52,12 +61,17 @@ module.exports = function* () {
     settings: settings
   };
 
-  var mode = 'backtest';
+  let mode = 'backtest';
 
-  var config = {};
+  let config = {};
 
-  var base = require('./baseConfig');
+  let base = require('./baseConfig');
   _.merge(config, base, backtest);
+
+  config.request = {
+    hash: hashCode(this.request.body),
+    body: this.request.body
+  };
 
   this.body = yield pipelineRunner(mode, config);
 
