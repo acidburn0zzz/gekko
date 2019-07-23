@@ -16,7 +16,7 @@ const summaryProjection = {
   exchange: 1,
   pair: 1,
   time: 1,
-  "tradingAdvisor.method": 1,
+  "tradingAdvisor": 1,
   "performanceReport": 1
 };
 

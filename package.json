@@ -1,6 +1,6 @@
 {
   "name": "gekko",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A bitcoin trading bot for auto trading at various exchanges",
   "keywords": [
     "trading",
@@ -20,6 +20,7 @@
     "co-fs": "^1.2.0",
     "commander": "^2.13.0",
     "convnetjs": "^0.3.0",
+    "dookie": "^0.2.1",
     "gekko": "0.0.9",
     "humanize-duration": "^3.10.0",
     "js-combinatorics": "^0.5.4",

@@ -34,6 +34,8 @@ var Base = function(settings) {
   this.age = 0;
   this.processedTicks = 0;
   this.setup = false;
+  this.log = log;
+  this.config = config;
   this.settings = settings;
   this.tradingAdvisor = config.tradingAdvisor;
   // defaults
@@ -236,7 +238,7 @@ Base.prototype.addIndicator = function(name, type, parameters) {
   return this.indicators[name] = new Indicators[type](parameters);
 
   // some indicators need a price stream, others need full candles
-}
+};
 
 Base.prototype.advice = function(newDirection) {
   // ignore legacy soft advice

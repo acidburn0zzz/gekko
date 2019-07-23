@@ -52,3 +52,4 @@ exchange/nusadua
 package-lock.json
 workspaces/indicators/
 workspaces/strategies/
+sandbox/temp/
