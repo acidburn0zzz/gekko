@@ -116,7 +116,7 @@ router.post('/api/sandboxBacktest', require(ROUTE('sandboxBacktest')));
 
 app
 .use(cors())
-.use(serve(WEBROOT + 'vue/dist'))
+.use(serve(WEBROOT + config.ui.mode || 'vue/dist'))
 .use(bodyParser())
 .use(require('koa-logger')())
 .use(router.routes())

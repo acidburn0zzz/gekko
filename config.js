@@ -17,6 +17,7 @@ config.api = {
 };
 
 config.ui = {
+  mode: process.env.GEKKO_MODE || 'gordon', // gordon or vue/dist
   ssl: false,
   host: 'localhost',
   port: process.env.GEKKO_API_PORT,

@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0.2] UNRELEASED
+## [1.1.0]
+
+- Add Gordon Ui as default user interface.
+- Extended baseTradingMethod allowing access some function like `log` and `config` directly without more imports.
+
+## [1.0.2]
 
 - Bugfix - Save request when processing a `sandboxBacktest`.
 
