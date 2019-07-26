@@ -5,8 +5,8 @@
 
 const CONFIG = {
   headless: true,
-  baseUrl: `${window.location.origin}`,
-  websocket: `ws://${window.location.host}`,
+  baseUrl: `${window.location.origin}${window.location.pathname}`,
+  websocket: `ws://${window.location.host}${window.location.pathname}`,
 
   /**
    * Gordon UI - configure your additional Indicator names here
